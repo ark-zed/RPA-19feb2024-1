@@ -2,19 +2,24 @@ from flask import Flask,request,render_template
 
 app =Flask(__name__)
 
+r = ""
+first_time = 1
+
 @app.route("/",methods=["GET","POST"])
 def index():
     return(render_template("index.html"))
 
 @app.route("/main",methods=["GET","POST"])
 def main():
-    r = request.form.get("r")
+    global r,first_time
+    if first_time==1:
+        r=request.form.get("r")
+        first_time=0
     return(render_template("main.html",r=r))
   
-@app.route("/imageGPT",methods=["GET","POST"])
+@app.route("/image_gpt",methods=["GET","POST"])
 def main():
-    return(render_template("image_gpt.html"))
-  
+    return(render_template("image_gpt.html"))  
 if __name__=="__main__":
     app.run()
 
