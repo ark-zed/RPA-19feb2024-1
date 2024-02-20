@@ -6,7 +6,6 @@ r = ""
 first_time = 1
 
 @app.route("/",methods=["GET","POST"])
-
 def index():
     return(render_template("index.html"))
 
@@ -24,10 +23,10 @@ def image_gpt():
 
 @app.route("/end",methods=["GET","POST"])
 def end():
-    global first time
     first_time = 1
     return(render_template("end.html"))
 
 
 if __name__ == "__main__":
     app.run()
+
